@@ -1,0 +1,48 @@
+body {
+    background: #f0f0f1;
+    min-width: 0;
+}
+
+.login {
+    width: 320px;
+    margin: 0 auto;
+    padding-top: 5%;
+
+    .loginform {
+        padding: 24px;
+        background: #fff;
+        border: 1px solid #c3c4c7;
+
+        .label-input {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 12px;
+
+            label {
+                line-height: 1.5rem;
+            }
+        }
+
+        .submit {
+            display: block;
+            margin-left: auto;
+        }
+    }
+
+    .nav {
+        display: flex;
+        gap: 10px;
+        padding: 0 10px;
+        height: 36px;
+        align-items: center;
+
+        a {
+            color: #50575e;
+
+            &:hover {
+                color: #135e96;
+
+            }
+        }
+    }
+}

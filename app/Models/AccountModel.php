@@ -14,6 +14,14 @@ class AccountModel extends Model
         return $builder->get()->getResultArray();
     }
 
+    // 通过 uid 获取用户
+    function getUserByUid($uid)
+    {
+        $db = db_connect();
+        $builder = $db->table('users')->where('uid', $uid);
+        return $builder->get()->getResultArray();
+    }
+
     // 通过用户名获取用户
     function getUserByUsername($username)
     {
@@ -39,5 +47,14 @@ class AccountModel extends Model
             'email' => $email,
             'password' => password_hash($password, PASSWORD_DEFAULT),
         ]);
+    }
+
+    // 通过 uid 更新用户密码
+    function updateUserByUid($uid, $password)
+    {
+        $db = db_connect();
+        $db->table('users')->update([
+            'password' =>  password_hash($password, PASSWORD_DEFAULT),
+        ], ['uid' => $uid]);
     }
 }

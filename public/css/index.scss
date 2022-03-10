@@ -12,7 +12,7 @@ html {
 
 body {
     background: #1e1e1e;
-    color: #8e8e8e;
+    color: #aaa;
     font-size: 14px;
     height: 100%;
 }
@@ -35,14 +35,18 @@ input {
 }
 
 a {
-    color: #8e8e8e;
+    color: #aaa;
     text-decoration: none;
     transition: color .2s ease-in-out;
 
     &:hover {
-        color: #666;
+        color: #888;
     }
 
+}
+
+.material-icons-round {
+    overflow: hidden;
 }
 
 .btn,
@@ -50,6 +54,7 @@ button,
 input[type="button"],
 input[type="submit"] {
     display: block;
+    white-space: nowrap;
     height: 40px;
     line-height: 40px;
     color: #fff;
@@ -60,6 +65,7 @@ input[type="submit"] {
     border-radius: 8px;
     outline: none;
     cursor: pointer;
+
 
     &:hover {
         color: #fff;
@@ -96,7 +102,7 @@ ul {
 }
 
 .wrapper {
-    max-width: 1440px;
+    max-width: 1400px;
     height: 100%;
     display: flex;
     margin: 0 auto;
@@ -104,7 +110,7 @@ ul {
     .aside {
         width: 280px;
         height: 100%;
-        padding: 0 40px;
+        padding: 0 24px;
 
         .logo {
             height: 100px;
@@ -136,6 +142,47 @@ ul {
 
 
         }
+
+        .menu {
+            li {
+                a {
+                    color: #aaa;
+                    padding: 8px 16px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    font-size: 16px;
+                    border-radius: 8px;
+
+                    .title {
+                        display: flex;
+                        align-items: center;
+
+                        span[class^="material-icons"] {
+                            margin-right: 16px;
+                            line-height: 32px;
+                        }
+                    }
+
+                    .total {
+                        font-size: 12px;
+                    }
+
+                    &:hover {
+                        background-color: #242424;
+                    }
+
+                }
+
+                &.active {
+                    a {
+                        color: #fff;
+                        background-color: #2b2b2b;
+                    }
+                }
+            }
+
+        }
     }
 
     .container {
@@ -148,6 +195,18 @@ ul {
             align-items: center;
             justify-content: space-between;
             gap: 20%;
+
+            .title {
+                display: none;
+                color: #999;
+                line-height: 32px;
+                font-size: 20px;
+                font-weight: bold;
+
+                span {
+                    color: #fff;
+                }
+            }
 
             .search {
                 flex: auto;
@@ -203,6 +262,94 @@ ul {
                     }
                 }
             }
+        }
+    }
+
+    .open-nav {
+        position: fixed;
+        width: 40px;
+        height: 40px;
+        background-color: #1e1e1e;
+        border-radius: 8px;
+        left: 8px;
+        bottom: 8px;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        &:hover {
+            color: #888;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .wrapper {
+        .aside {
+            display: none;
+            padding: 0;
+            width: 56px;
+            background-color: #000;
+
+            &.open {
+                display: block;
+            }
+
+            .logo {
+                a {
+                    justify-content: center;
+                    gap: 0;
+
+                    .title {
+                        display: none;
+                    }
+                }
+            }
+
+            .menu {
+                li {
+                    a {
+                        padding: 8px 0;
+                        border-radius: 0;
+                        justify-content: center;
+
+                        .title {
+                            justify-content: center;
+
+                            span[class^="material-icons"] {
+                                margin-right: 0;
+                            }
+
+                            span:not([class^="material-icons"]) {
+                                display: none;
+                            }
+                        }
+
+                        .total {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+
+        .container {
+            padding: 0 16px;
+
+            .header {
+                .title {
+                    display: block;
+                }
+
+                .search {
+                    display: none;
+                }
+            }
+        }
+
+        .open-nav {
+            display: flex;
         }
     }
 }

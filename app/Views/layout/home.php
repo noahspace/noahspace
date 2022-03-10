@@ -7,6 +7,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title></title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Round">
     <link rel="stylesheet" href="<?= base_url('css/index.min.css') ?>">
     <?= $this->renderSection('css') ?>
@@ -21,10 +22,40 @@
                     <div class="title"><span>noah</span>apps</div>
                 </a>
             </div>
+            <ul class="menu">
+                <li class="active">
+                    <a href="">
+                        <span class="title">
+                            <span class="material-icons-outlined">star_outline</span>
+                            <span>程序</span>
+                        </span>
+                        <span class="total">200</span>
+                    </a>
+                </li>
+                <li><a href="">
+                        <span class="title">
+                            <span class="material-icons-outlined">rocket_launch</span>
+                            <span>游戏</span>
+                        </span>
+                        <span class="total">100</span>
+                    </a>
+                </li>
+                <li><a href="">
+                        <span class="title">
+                            <span class="material-icons-outlined">public</span>
+                            <span>系统</span>
+                        </span>
+                        <span class="total">100</span>
+                    </a>
+                </li>
+            </ul>
             </a>
         </div>
         <div class="container">
             <div class="header">
+                <div class="title">
+                    <div class="title"><span>noah</span>apps</div>
+                </div>
                 <form class="search" action="" method="get">
                     <input type="" name="search">
                 </form>
@@ -45,7 +76,11 @@
             </div>
             <?= $this->renderSection('main') ?>
         </div>
+        <div class="open-nav">
+            <span class="material-icons-outlined">segment</span>
+        </div>
     </div>
+    <script src="<?= base_url('js/homelayout.min.js') ?>"></script>
     <?= $this->renderSection('js') ?>
 </body>
 

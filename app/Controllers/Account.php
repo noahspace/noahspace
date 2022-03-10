@@ -32,7 +32,7 @@ class Account extends BaseController
             'account' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => '账户不能为空',
+                    'required' => '用户名或邮箱不能为空',
                 ],
             ],
             'password' => [
@@ -155,7 +155,6 @@ class Account extends BaseController
             if ($this->session->get('logged_in')) {
                 return redirect()->to('/');
             }
-            $this->session->set('reset_password_code', random_string());
             // 发送邮件表单
             if (empty($this->request->getGet())) {
                 $this->session->set('reset_password_code', random_string());
@@ -198,25 +197,35 @@ class Account extends BaseController
                             'in_list' => '请求非法',
                         ],
                     ],
-                    'email' => [
-                        'rules' => 'required|valid_email|is_not_unique[users.email]',
+                    'account' => [
+                        'rules' => 'required',
                         'errors' => [
-                            'required' => '邮箱不能为空',
-                            'valid_email' => '邮箱格式不正确',
-                            'is_not_unique' => '此邮箱未注册',
+                            'required' => '用户名或邮箱不能为空',
                         ],
                     ],
                 ])) {
-                    $user = $accountModel->getUserByEmail($this->request->getPost('email'))[0];
-                    $email = Services::email();
-                    $email->setFrom('noahspaceadmin@163.com', '管理员');
-                    $email->setTo($user['email']);
-                    $email->setSubject('诺亚空间');
-                    $email->setMessage('点击此链接重置密码：' . site_url('reset-password?uid=' . $user['uid'] . '&code=' . md5($user['password'])));
-                    $email->send();
-                    return view('info', [
-                        'action' => 'resetPassword',
-                    ]);
+                    $data = $accountModel->getUserByAccount($this->request->getPost('account'));
+                    if (!empty($data)) {
+                        $user = $data[0];
+                        $email = Services::email();
+                        $email->setFrom('noahspaceadmin@163.com', '管理员');
+                        $email->setTo($user['email']);
+                        $email->setSubject('诺亚空间');
+                        $email->setMessage('点击此链接重置密码：' . site_url('reset-password?uid=' . $user['uid'] . '&code=' . md5($user['password'])));
+                        $email->send();
+                        return view('info', [
+                            'action' => 'resetPassword',
+                        ]);
+                    } else {
+                        $this->session->set('reset_password_code', random_string());
+                        return view('login', [
+                            'action' => 'resetPasswordSendEmail',
+                            'code' => $this->session->get('reset_password_code'),
+                            'errors' => [
+                                'account' => "用户名或邮箱不存在",
+                            ],
+                        ]);
+                    }
                 } else {
                     $this->session->set('reset_password_code', random_string());
                     return view('login', [

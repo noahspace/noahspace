@@ -1,6 +1,12 @@
 <?= $this->extend('layout/default') ?>
 <?= $this->section('main') ?>
 <div class="login">
+    <div class="top-nav">
+        <a href="<?= site_url('/') ?>" class="back">
+            <span class="material-icons-round">navigate_before</span>
+            <span>返回首页</span>
+        </a>
+    </div>
     <?php if ($action === 'register') : ?>
         <div class="alert">注册为本站点用户</div>
     <?php endif; ?>
@@ -18,7 +24,7 @@
         <input type="hidden" name="code" value="<?= $code ?>">
         <?php if ($action === 'login') : ?>
             <div class="label-input">
-                <label for="account">用户名或电子邮箱地址</label>
+                <label for="account">用户名或邮箱</label>
                 <input class="input" type="text" name="account" value="<?= old('account') ?>">
             </div>
             <div class="label-input">
@@ -45,8 +51,8 @@
         <?php elseif ($action === 'resetPasswordSendEmail') : ?>
             <input type="hidden" name="action" value="<?= $action ?>">
             <div class="label-input">
-                <label for="email">电子邮箱地址</label>
-                <input class="input" type="text" name="email" value="<?= old('email') ?>">
+                <label for="email">用户名或邮箱</label>
+                <input class="input" type="text" name="account" value="<?= old('account') ?>">
             </div>
         <?php elseif ($action === 'resetPasswordSuccess') : ?>
             <input type="hidden" name="action" value="<?= $action ?>">

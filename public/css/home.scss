@@ -1,7 +1,127 @@
-.home {
-    .title {
-        color: #fff;
-        font-size: 24px;
-        font-weight: normal;
+.category-title {
+    color: #fff;
+    font-size: 24px;
+    font-weight: normal;
+    margin: 20px 0;
+}
+
+.app-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+
+    .item {
+        a {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            color: #777;
+
+            .logo {
+                width: 50px;
+                height: 50px;
+                border-radius: 8px;
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+
+            }
+
+            .info {
+                flex: auto;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+                .title {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-bottom: 4px;
+
+                    h3 {
+                        color: #fff;
+                        font-size: 16px;
+                        font-weight: normal;
+                        line-height: 20px;
+                    }
+
+                }
+
+                .version {
+                    padding: 0 8px;
+                    border-radius: 4px;
+                    line-height: 20px;
+                    background-color: #333;
+                    font-size: 12px;
+                }
+            }
+        }
     }
+}
+
+
+@media screen and(max-width: 1200px) {
+    .app-list {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+
+}
+
+@media screen and(max-width: 960px) {
+    .app-list {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+}
+
+.game-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+
+    .item {
+        a {
+            color: #777;
+
+            .preview {
+                padding-top: 56%;
+                width: 100%;
+                background: #333;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+                border-radius: 8px;
+            }
+        }
+
+        .info {
+            margin-top: 8px;
+
+            h3 {
+                color: #fff;
+                font-size: 16px;
+                font-weight: normal;
+                line-height: 20px;
+            }
+        }
+    }
+}
+
+@media screen and(max-width: 1200px) {
+    .game-list {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+
+}
+
+@media screen and(max-width: 960px) {
+    .game-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
 }

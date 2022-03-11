@@ -75,6 +75,17 @@
                 </div>
             </div>
             <?= $this->renderSection('main') ?>
+            <div class="footer">
+                <div class="link">
+                    <a href="">版权持有人</a>
+                    <a href="">开发者</a>
+                </div>
+                <div class="contact">
+                    <a href="">
+                        <span class="material-icons-round">mail</span>
+                    </a>
+                </div>
+            </div>
         </div>
         <div class="open-nav">
             <span class="material-icons-outlined">segment</span>

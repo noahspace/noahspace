@@ -108,6 +108,7 @@ ul {
     margin: 0 auto;
 
     .aside {
+        position: fixed;
         width: 280px;
         height: 100%;
         padding: 0 24px;
@@ -186,6 +187,8 @@ ul {
     }
 
     .container {
+        padding-left: 280px;
+        height: 100%;
         flex: auto;
         padding-right: 40px;
 
@@ -263,6 +266,24 @@ ul {
                 }
             }
         }
+
+        .main {
+            height: calc(100% - 100px);
+            overflow: auto;
+        }
+
+        .footer {
+            margin-top: 30%;
+            border-top: 1px solid #777;
+            display: flex;
+            justify-content: space-between;
+            padding: 56px 0;
+
+            .link {
+                display: flex;
+                gap: 20px;
+            }
+        }
     }
 
     .open-nav {
@@ -284,19 +305,21 @@ ul {
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 960px) {
     .wrapper {
         .aside {
             display: none;
             padding: 0;
             width: 56px;
-            background-color: #000;
+            background-color: #111;
 
             &.open {
                 display: block;
             }
 
             .logo {
+                height: 72px;
+
                 a {
                     justify-content: center;
                     gap: 0;
@@ -338,12 +361,32 @@ ul {
             padding: 0 16px;
 
             .header {
+                height: 72px;
+
                 .title {
                     display: block;
                 }
 
                 .search {
                     display: none;
+                }
+            }
+
+            .main {
+                height: calc(100% - 72px);
+            }
+
+            .footer {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                line-height: 30px;
+                .link {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 0;
+
                 }
             }
         }
